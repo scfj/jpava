@@ -1,5 +1,5 @@
 # jpava
-Let you search text among all fields in a pretty way.
+Lets you search text among all fields in a pretty way.
 
 ## Installation
 
@@ -16,7 +16,7 @@ Add dependency to your pom.xml.
 
 ## Usage
 
-Add a method(s), that accepts specicification object, to your repository inherited from JpaRepository.
+Add a method(s), that accepts specification object, to your repository inherited from JpaRepository.
 
 ```java
 interface PostRepository extends JpaRepository<Post, Long> {
