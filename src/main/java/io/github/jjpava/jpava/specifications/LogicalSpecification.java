@@ -18,5 +18,4 @@ public abstract class LogicalSpecification<T> implements Specification<T> {
                 other.toPredicate(root, query, builder)
         );
     }
-
 }

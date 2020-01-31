@@ -15,7 +15,8 @@ public class TextSpecifications {
     }
 
     public <T> TextSpecification<T> inAnyColumnOf(Class<T> aClass) {
-        return new TextSpecification<T>(searchQuery, aClass) {};
+        return new TextSpecification<T>(searchQuery, aClass) {
+        };
     }
 
     public <T> TextSpecification<T> inEveryColumnOf(Class<T> aClass) {
