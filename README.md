@@ -57,3 +57,6 @@ postRepository.findAll(
     ).or(yourCustomSpecification)
 );
 ```
+
+## Demo
+See demo here: [jjpava/jpava-demo](https://github.com/jjpava/jpava-demo).
