@@ -41,7 +41,7 @@
         <repository>
             <id>github</id>
             <name>GitHub jjpava Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/jjpava</url>
+            <url>https://maven.pkg.github.com/jjpava/jpava</url>
         </repository>
     </distributionManagement>
 </project>
