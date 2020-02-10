@@ -26,7 +26,7 @@ interface PostRepository extends JpaRepository<Post, Long> {
 Import single method into your controller/service that uses repository.
 
 ```java
-import static io.github.jjpava.jpava.specifications.TextSpecifications.withText;
+import static com.github.scfj.jpava.specifications.TextSpecifications.withText;
 ```
 
 Now you can perform complex search operation with ease!
@@ -61,4 +61,4 @@ class Controller {
 ```
 
 ## Demo
-See demo here: [jjpava/jpava-demo](https://github.com/jjpava/jpava-demo).
+See demo here: [scfj/jpava-demo](https://github.com/scfj/jpava-demo).
