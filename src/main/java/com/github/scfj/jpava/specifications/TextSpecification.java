@@ -1,4 +1,4 @@
-package com.github.jjpava.jpava.specifications;
+package com.github.scfj.jpava.specifications;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;

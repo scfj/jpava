@@ -7,9 +7,9 @@ Add dependency to your `pom.xml`.
 ```xml
 <dependencies>
   <dependency>
-    <groupId>com.github.jjpava</groupId>
+    <groupId>com.github.scfj</groupId>
     <artifactId>jpava</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
   </dependency>
 </dependencies>
 ```

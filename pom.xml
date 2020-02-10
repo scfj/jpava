@@ -4,9 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.jjpava</groupId>
+    <groupId>com.github.scfj</groupId>
     <artifactId>jpava</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <build>
         <plugins>
@@ -17,6 +21,7 @@
                     <source>8</source>
                     <target>8</target>
                 </configuration>
+                <version>3.8.1</version>
             </plugin>
         </plugins>
     </build>
@@ -41,7 +46,7 @@
         <repository>
             <id>github</id>
             <name>GitHub jjpava Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/jjpava/jpava</url>
+            <url>https://maven.pkg.github.com/scfj/jpava</url>
         </repository>
     </distributionManagement>
 </project>
