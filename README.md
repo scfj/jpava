@@ -5,13 +5,11 @@ Lets you search text among all fields in a pretty way.
 
 Add dependency to your `pom.xml`.
 ```xml
-<dependencies>
-  <dependency>
-    <groupId>com.github.scfj</groupId>
-    <artifactId>jpava</artifactId>
-    <version>1.2.0</version>
-  </dependency>
-</dependencies>
+<dependency>
+  <groupId>com.github.scfj</groupId>
+  <artifactId>jpava</artifactId>
+  <version>1.2.0</version>
+</dependency>
 ```
 
 ## Usage

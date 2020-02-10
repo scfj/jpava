@@ -54,6 +54,9 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <additionalOptions>-html5</additionalOptions>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
