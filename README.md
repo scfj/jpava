@@ -1,4 +1,6 @@
 # jpava
+[![Maintainability](https://api.codeclimate.com/v1/badges/092631a0e3cbfaf69b1a/maintainability)](https://codeclimate.com/github/scfj/jpava/maintainability)
+
 Lets you search text among all fields in a pretty way.
 
 ## Installation
