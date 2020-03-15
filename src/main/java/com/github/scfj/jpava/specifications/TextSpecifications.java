@@ -1,13 +1,12 @@
 package com.github.scfj.jpava.specifications;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.Predicate;
+import com.github.scfj.jpava.specifications.compose.AndComposeStrategy;
 
 public class TextSpecifications {
     private String searchQuery;
 
     private TextSpecifications(String text) {
-        this.searchQuery = "%" + text + "%";
+        this.searchQuery = text;
     }
 
     public static TextSpecifications withText(String text) {
@@ -15,16 +14,17 @@ public class TextSpecifications {
     }
 
     public <T> TextSpecification<T> inAnyColumnOf(Class<T> aClass) {
-        return new TextSpecification<T>(searchQuery, aClass) {
-        };
+        return new TextSpecification<>(
+                searchQuery,
+                new FieldNames(aClass)
+        );
     }
 
-    public <T> TextSpecification<T> inEveryColumnOf(Class<T> aClass) {
-        return new TextSpecification<T>(searchQuery, aClass) {
-            @Override
-            protected Predicate buildPredicates(CriteriaBuilder builder, Predicate... predicates) {
-                return builder.and(predicates);
-            }
-        };
+    public <T> TextSpecification<T> inAllColumnsOf(Class<T> aClass) {
+        return new TextSpecification<>(
+                searchQuery,
+                new FieldNames(aClass),
+                new AndComposeStrategy()
+        );
     }
 }
