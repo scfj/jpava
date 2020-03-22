@@ -10,7 +10,7 @@ Add dependency to your `pom.xml`.
 <dependency>
   <groupId>com.github.scfj</groupId>
   <artifactId>jpava</artifactId>
-  <version>1.2.0</version>
+  <version>1.3.0</version>
 </dependency>
 ```
 
