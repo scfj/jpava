@@ -35,29 +35,35 @@ Now you can perform complex search operation with ease!
 ```java
 class Controller {
     public void findExamples() {
+        List<Post> posts;
         /*
          * It will find all posts that has substring "hello" in all post's fields (title, preview, content etc)
          */
-        postRepository.findAll(withText("hello").inAnyColumnOf(Post.class));
+        posts = postRepository.findAll(withText("hello").inAnyColumnOf(Post.class));
         
         /*
          * Matches only posts that has "hello" in all fields.
          */
-        postRepository.findAll(withText("hello").inEveryColumnOf(Post.class));
+        posts = postRepository.findAll(withText("hello").inEveryColumnOf(Post.class));
         
         /*
          * Searches for "hello". "Hello" or "HELLO" won't be found.
          */
-        postRepository.findAll(withText("hello").inAnyColumnOf(Post.class).matchCase());
+        posts = postRepository.findAll(withText("hello").inAnyColumnOf(Post.class).matchCase());
         
         /*
          * Combine specifications.
          */
-        postRepository.findAll(
+        posts = postRepository.findAll(
             withText("hello").inAnyColumnOf(Post.class).and(
                 withText("world").inAnyColumnOf(Post.class)
             ).or(yourCustomSpecification)
         );
+
+        /*
+         * You can skip some attributes.
+         */
+        posts = postRepository.findAll(withText("Hello").inAnyColumnOf(Post.class).except("id"));
     }
 }
 ```
