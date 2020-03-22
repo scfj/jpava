@@ -2,6 +2,11 @@ package com.github.scfj.jpava.specifications;
 
 import com.github.scfj.jpava.specifications.compose.AndComposeStrategy;
 
+/**
+ * Provides DSL to build TextSpecification
+ *
+ * @see TextSpecification
+ */
 public class TextSpecifications {
     private String searchQuery;
 

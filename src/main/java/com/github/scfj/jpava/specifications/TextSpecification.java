@@ -11,6 +11,11 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+/**
+ * Full text search specification. Searches given substring in all columns
+ *
+ * @param <T> - entity class which columns to scan
+ */
 public class TextSpecification<T> extends LogicalSpecification<T> {
     private final FieldNames fieldNames;
     private final String searchQuery;
@@ -45,7 +50,8 @@ public class TextSpecification<T> extends LogicalSpecification<T> {
     }
 
     public TextSpecification<T> matchCase() {
-        return new TextSpecification<>(searchQuery, fieldNames, composeStrategy, new MatchCasePredicateStrategy(searchQuery));
+        return new TextSpecification<>(searchQuery, fieldNames, composeStrategy,
+                                       new MatchCasePredicateStrategy(searchQuery));
     }
 
     private Predicate[] predicatesForColumns(Root<?> root, CriteriaBuilder builder) {
