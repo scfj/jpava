@@ -1,6 +1,6 @@
 package com.github.scfj.jpava.specifications;
 
-import com.github.scfj.jpava.specifications.compose.AndComposeStrategy;
+import com.github.scfj.jpava.specifications.compose.AndCompose;
 
 /**
  * Provides DSL to build TextSpecification
@@ -8,7 +8,7 @@ import com.github.scfj.jpava.specifications.compose.AndComposeStrategy;
  * @see TextSpecification
  */
 public class TextSpecifications {
-    private String searchQuery;
+    private final String searchQuery;
 
     private TextSpecifications(String text) {
         this.searchQuery = text;
@@ -29,7 +29,7 @@ public class TextSpecifications {
         return new TextSpecification<>(
                 searchQuery,
                 new FieldNames(aClass),
-                new AndComposeStrategy()
+                new AndCompose()
         );
     }
 }
