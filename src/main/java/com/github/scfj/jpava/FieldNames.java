@@ -8,9 +8,6 @@ import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toSet;
 
-/**
- * Collection of attributes names of a class
- */
 public class FieldNames {
     private final Set<String> fieldNames;
 
@@ -33,10 +30,9 @@ public class FieldNames {
     }
 
     private FieldNames except(Collection<String> excludedFields) {
-        return new FieldNames(
-                this.fieldNames.stream()
-                        .filter(f -> !excludedFields.contains(f))
-                        .collect(toSet())
+        return new FieldNames(this.fieldNames.stream()
+                .filter(f -> !excludedFields.contains(f))
+                .collect(toSet())
         );
     }
 }

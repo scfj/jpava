@@ -1,46 +1,26 @@
 package com.github.scfj.jpava;
 
 import com.github.scfj.jpava.compose.ComposeStrategy;
-import com.github.scfj.jpava.compose.OrCompose;
-import com.github.scfj.jpava.predicates.IgnoreCasePredicateStrategy;
-import com.github.scfj.jpava.predicates.PredicateStrategy;
+import com.github.scfj.jpava.predicates.Matcher;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-/**
- * Full text search specification. Searches given substring in all columns
- *
- * @param <T> - entity class which columns to scan
- */
 public class TextSpecification<T> extends LogicalSpecification<T> {
     private final FieldNames fieldNames;
     private final ComposeStrategy composeStrategy;
-    private final PredicateStrategy predicateStrategy;
+    private final Matcher matcher;
 
     public TextSpecification(
             FieldNames fieldNames,
             ComposeStrategy composeStrategy,
-            PredicateStrategy predicateStrategy
+            Matcher matcher
     ) {
         this.fieldNames = fieldNames;
         this.composeStrategy = composeStrategy;
-        this.predicateStrategy = predicateStrategy;
-    }
-
-    public TextSpecification(
-            String searchQuery,
-            FieldNames fieldNames,
-            ComposeStrategy composeStrategy
-    ) {
-        this(fieldNames, composeStrategy,
-                new IgnoreCasePredicateStrategy(searchQuery));
-    }
-
-    public TextSpecification(String searchQuery, FieldNames fieldNames) {
-        this(searchQuery, fieldNames, new OrCompose());
+        this.matcher = matcher;
     }
 
     @Override
@@ -58,7 +38,7 @@ public class TextSpecification<T> extends LogicalSpecification<T> {
             Root<?> root, CriteriaBuilder builder
     ) {
         return fieldNames.stream()
-                .map(field -> predicateStrategy.buildPredicate(
+                .map(field -> matcher.toPredicate(
                         field, root, builder
                 )).toArray(Predicate[]::new);
     }

@@ -3,9 +3,10 @@ package com.github.scfj.jpava;
 import org.springframework.data.jpa.domain.Specification;
 
 /**
- * Provides default {@code and} and {@code or} for Specification interface
+ * Provides default {@code and} and {@code or}
+ * methods implementations for Specification interface
  *
- * @param <T> - specification is used to find objects
+ * @param <T> specification is used to find objects
  *            of type {@code T} in repository
  */
 public abstract class LogicalSpecification<T> implements Specification<T> {
