@@ -1,7 +1,7 @@
 package com.github.scfj.jpava.specifications;
 
 import com.github.scfj.jpava.specifications.compose.ComposeStrategy;
-import com.github.scfj.jpava.specifications.compose.OrComposeStrategy;
+import com.github.scfj.jpava.specifications.compose.OrCompose;
 import com.github.scfj.jpava.specifications.predicates.IgnoreCasePredicateStrategy;
 import com.github.scfj.jpava.specifications.predicates.MatchCasePredicateStrategy;
 import com.github.scfj.jpava.specifications.predicates.PredicateStrategy;
@@ -37,7 +37,7 @@ public class TextSpecification<T> extends LogicalSpecification<T> {
     }
 
     public TextSpecification(String searchQuery, FieldNames fieldNames) {
-        this(searchQuery, fieldNames, new OrComposeStrategy());
+        this(searchQuery, fieldNames, new OrCompose());
     }
 
     @Override
