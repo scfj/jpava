@@ -17,18 +17,15 @@ import javax.persistence.criteria.Root;
  */
 public class TextSpecification<T> extends LogicalSpecification<T> {
     private final FieldNames fieldNames;
-    private final String searchQuery;
     private final ComposeStrategy composeStrategy;
     private final PredicateStrategy predicateStrategy;
 
     public TextSpecification(
-            String searchQuery,
             FieldNames fieldNames,
             ComposeStrategy composeStrategy,
             PredicateStrategy predicateStrategy
     ) {
         this.fieldNames = fieldNames;
-        this.searchQuery = searchQuery;
         this.composeStrategy = composeStrategy;
         this.predicateStrategy = predicateStrategy;
     }
@@ -38,7 +35,7 @@ public class TextSpecification<T> extends LogicalSpecification<T> {
             FieldNames fieldNames,
             ComposeStrategy composeStrategy
     ) {
-        this(searchQuery, fieldNames, composeStrategy,
+        this(fieldNames, composeStrategy,
                 new IgnoreCasePredicateStrategy(searchQuery));
     }
 
