@@ -22,10 +22,10 @@ public class TextSpecification<T> extends LogicalSpecification<T> {
     private final ComposeStrategy composeStrategy;
     private final PredicateStrategy predicateStrategy;
 
-    private TextSpecification(String searchQuery,
-                              FieldNames fieldNames,
-                              ComposeStrategy composeStrategy,
-                              PredicateStrategy predicateStrategy) {
+    public TextSpecification(String searchQuery,
+                             FieldNames fieldNames,
+                             ComposeStrategy composeStrategy,
+                             PredicateStrategy predicateStrategy) {
         this.fieldNames = fieldNames;
         this.searchQuery = searchQuery;
         this.composeStrategy = composeStrategy;
