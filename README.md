@@ -1,7 +1,7 @@
 # jpava
 [![Maintainability](https://api.codeclimate.com/v1/badges/092631a0e3cbfaf69b1a/maintainability)](https://codeclimate.com/github/scfj/jpava/maintainability)
 
-Lets you search text among all fields in a pretty way.
+Lets you search text among all fields pretty.
 
 ## Installation
 
@@ -10,63 +10,56 @@ Add dependency to your `pom.xml`.
 <dependency>
   <groupId>com.github.scfj</groupId>
   <artifactId>jpava</artifactId>
-  <version>1.3.0</version>
+  <version>2.0.0</version>
 </dependency>
 ```
 
 ## Usage
 
-Add a method(s), that accepts specification object, to your repository inherited from JpaRepository.
+Add a method(s) accepting specification object to your repository inherited from JpaRepository.
 
 ```java
+@Repository
 interface PostRepository extends JpaRepository<Post, Long> {
     List<Post> findAll(Specification<Post> spec);
+    // OR
     Page<Post> findAll(Specification<Post> spec, Pageable pageable);
 }
 ```
 
-Import single method into your controller/service that uses repository.
+Import single method into your controller/service which uses repository.
 
 ```java
-
+import static com.github.scfj.jpava.TextSpecifications.forClass;
+// OR
+import static com.github.scfj.jpava.TextSpecifications.inAnyColumnOf;
 ```
 
 Now you can perform complex search operation with ease!
 ```java
-class Controller {
-    public void findExamples() {
-        List<Post> posts;
-        /*
-         * It will find all posts that has substring "hello" in all post's fields (title, preview, content etc)
-         */
-        posts = postRepository.findAll(withText("hello").inAnyColumnOf(Post.class));
-        
-        /*
-         * Matches only posts that has "hello" in all fields.
-         */
-        posts = postRepository.findAll(withText("hello").inEveryColumnOf(Post.class));
-        
-        /*
-         * Searches for "hello". "Hello" or "HELLO" won't be found.
-         */
-        posts = postRepository.findAll(withText("hello").inAnyColumnOf(Post.class).matchCase());
-        
-        /*
-         * Combine specifications.
-         */
-        posts = postRepository.findAll(
-            withText("hello").inAnyColumnOf(Post.class).and(
-                withText("world").inAnyColumnOf(Post.class)
-            ).or(yourCustomSpecification)
-        );
+@Controller
+class PostController {
+    /*
+     * Configuration is very simple
+     */
+    Specification<Post> posts =
+        forClass(Post.class) // can be forClass, inAnyColumnOf (= forClass) or inAllColumnsOf
+            .except("id", "createdAt") // skip these fields when searching database
+            .ignoreCase(); // can be ignoreCase (default) or matchCase
 
+    public List<Post> findExamples() {
         /*
-         * You can skip some attributes.
+         * It will find all posts that has substring "hello"
+         * in any of post's fields (title, preview, content etc)
          */
-        posts = postRepository.findAll(withText("Hello").inAnyColumnOf(Post.class).except("id"));
+        return postRepository.findAll(posts.withText("hello"));
     }
 }
 ```
 
+## Deploy
+
+# TODO
+
 ## Demo
-See demo here: [scfj/jpava-demo](https://github.com/scfj/jpava-demo).
+See demo here (version <= 1.3): [scfj/jpava-demo](https://github.com/scfj/jpava-demo).
