@@ -9,7 +9,9 @@ import javax.persistence.criteria.Predicate;
  */
 public class OrCompose implements ComposeStrategy {
     @Override
-    public Predicate composePredicates(CriteriaBuilder builder, Predicate[] predicatesForColumns) {
+    public Predicate composePredicates(
+            CriteriaBuilder builder, Predicate[] predicatesForColumns
+    ) {
         return builder.or(predicatesForColumns);
     }
 }

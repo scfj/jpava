@@ -5,7 +5,8 @@ import org.springframework.data.jpa.domain.Specification;
 /**
  * Provides default {@code and} and {@code or} for Specification interface
  *
- * @param <T> - specification is used to find objects of type {@code T} in repository
+ * @param <T> - specification is used to find objects
+ *            of type {@code T} in repository
  */
 public abstract class LogicalSpecification<T> implements Specification<T> {
     @Override

@@ -6,7 +6,8 @@ import javax.persistence.criteria.Root;
 
 /**
  * Builds query that searches substring in some column:
- * {@code buildPredicate("content"...) -> where table.content LIKE '%Some Text%'}
+ * {@code buildPredicate("content"...)
+ * -> where table.content LIKE '%Some Text%'}
  */
 public class MatchCasePredicateStrategy implements PredicateStrategy {
     private final String searchQuery;
@@ -16,7 +17,9 @@ public class MatchCasePredicateStrategy implements PredicateStrategy {
     }
 
     @Override
-    public Predicate buildPredicate(String fieldName, Root<?> root, CriteriaBuilder builder) {
+    public Predicate buildPredicate(
+            String fieldName, Root<?> root, CriteriaBuilder builder
+    ) {
         return builder.like(
                 root.get(fieldName).as(String.class),
                 "%" + searchQuery + "%"

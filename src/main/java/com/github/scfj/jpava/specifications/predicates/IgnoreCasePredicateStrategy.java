@@ -6,7 +6,8 @@ import javax.persistence.criteria.Root;
 
 /**
  * Builds query that searches substring in some column and ignores case:
- * {@code buildPredicate("content"...) -> where LOWER(table.content) LIKE '%some text%'}
+ * {@code buildPredicate("content"...)
+ * -> where LOWER(table.content) LIKE '%some text%'}
  * Given text will be lower cased
  */
 public class IgnoreCasePredicateStrategy implements PredicateStrategy {
@@ -17,7 +18,9 @@ public class IgnoreCasePredicateStrategy implements PredicateStrategy {
     }
 
     @Override
-    public Predicate buildPredicate(String fieldName, Root<?> root, CriteriaBuilder builder) {
+    public Predicate buildPredicate(
+            String fieldName, Root<?> root, CriteriaBuilder builder
+    ) {
         return builder.like(
                 builder.lower(root.get(fieldName).as(String.class)),
                 "%" + searchQuery.toLowerCase() + "%"
