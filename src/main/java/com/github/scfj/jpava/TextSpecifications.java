@@ -7,43 +7,43 @@ import com.github.scfj.jpava.predicates.CaseMatchers;
 import com.github.scfj.jpava.predicates.IgnoreCaseMatchers;
 import com.github.scfj.jpava.predicates.Matchers;
 
-public class Dsl<T> {
+public class TextSpecifications<T> {
     private final ComposeStrategy composeStrategy;
     private FieldNames fieldNames;
     private Matchers matchers = new IgnoreCaseMatchers();
 
-    private Dsl(FieldNames fieldNames) {
+    private TextSpecifications(FieldNames fieldNames) {
         this(fieldNames, new OrCompose());
     }
 
-    private Dsl(FieldNames fieldNames, ComposeStrategy composeStrategy) {
+    private TextSpecifications(FieldNames fieldNames, ComposeStrategy composeStrategy) {
         this.fieldNames = fieldNames;
         this.composeStrategy = composeStrategy;
     }
 
-    public static <T> Dsl<T> forClass(Class<T> entityClass) {
+    public static <T> TextSpecifications<T> forClass(Class<T> entityClass) {
         return inAnyColumnOf(entityClass);
     }
 
-    public static <T> Dsl<T> inAnyColumnOf(Class<T> entityClass) {
-        return new Dsl<>(new FieldNames(entityClass));
+    public static <T> TextSpecifications<T> inAnyColumnOf(Class<T> entityClass) {
+        return new TextSpecifications<>(new FieldNames(entityClass));
     }
 
-    public static <T> Dsl<T> inAllColumnsOf(Class<T> entityClass) {
-        return new Dsl<T>(new FieldNames(entityClass), new AndCompose());
+    public static <T> TextSpecifications<T> inAllColumnsOf(Class<T> entityClass) {
+        return new TextSpecifications<T>(new FieldNames(entityClass), new AndCompose());
     }
 
-    public Dsl<T> except(String... fields) {
+    public TextSpecifications<T> except(String... fields) {
         fieldNames = fieldNames.except(fields);
         return this;
     }
 
-    public Dsl<T> matchCase() {
+    public TextSpecifications<T> matchCase() {
         matchers = new CaseMatchers();
         return this;
     }
 
-    public Dsl<T> ignoreCase() {
+    public TextSpecifications<T> ignoreCase() {
         matchers = new IgnoreCaseMatchers();
         return this;
     }
