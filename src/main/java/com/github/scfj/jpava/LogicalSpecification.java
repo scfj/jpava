@@ -1,4 +1,4 @@
-package com.github.scfj.jpava.specifications;
+package com.github.scfj.jpava;
 
 import org.springframework.data.jpa.domain.Specification;
 

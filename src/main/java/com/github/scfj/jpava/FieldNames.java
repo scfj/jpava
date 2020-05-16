@@ -1,4 +1,4 @@
-package com.github.scfj.jpava.specifications;
+package com.github.scfj.jpava;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;

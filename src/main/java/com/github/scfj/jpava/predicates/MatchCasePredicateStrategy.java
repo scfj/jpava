@@ -1,4 +1,4 @@
-package com.github.scfj.jpava.specifications.predicates;
+package com.github.scfj.jpava.predicates;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Predicate;

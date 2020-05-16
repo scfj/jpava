@@ -1,9 +1,9 @@
-package com.github.scfj.jpava.specifications;
+package com.github.scfj.jpava;
 
-import com.github.scfj.jpava.specifications.compose.ComposeStrategy;
-import com.github.scfj.jpava.specifications.compose.OrCompose;
-import com.github.scfj.jpava.specifications.predicates.IgnoreCasePredicateStrategy;
-import com.github.scfj.jpava.specifications.predicates.PredicateStrategy;
+import com.github.scfj.jpava.compose.ComposeStrategy;
+import com.github.scfj.jpava.compose.OrCompose;
+import com.github.scfj.jpava.predicates.IgnoreCasePredicateStrategy;
+import com.github.scfj.jpava.predicates.PredicateStrategy;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;

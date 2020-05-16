@@ -1,6 +1,6 @@
-package com.github.scfj.jpava.specifications;
+package com.github.scfj.jpava;
 
-import com.github.scfj.jpava.specifications.compose.AndCompose;
+import com.github.scfj.jpava.compose.AndCompose;
 
 /**
  * Provides DSL to build TextSpecification
