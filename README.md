@@ -58,8 +58,10 @@ class PostController {
 ```
 
 ## Deploy
-
-# TODO
+To deploy run
+```bash
+mvn clean deploy -P ossrh
+```
 
 ## Demo
 See demo here (version <= 1.3): [scfj/jpava-demo](https://github.com/scfj/jpava-demo).

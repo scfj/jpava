@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!--    <parent>-->
-    <!--        <groupId>org.sonatype.oss</groupId>-->
-    <!--        <artifactId>oss-parent</artifactId>-->
-    <!--        <version>9</version>-->
-    <!--    </parent>-->
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>9</version>
+    </parent>
 
     <groupId>com.github.scfj</groupId>
     <artifactId>jpava</artifactId>
@@ -133,7 +133,6 @@
                         <artifactId>maven-javadoc-plugin</artifactId>
                         <version>3.2.0</version>
                         <configuration>
-                            <additionalOptions>-html5</additionalOptions>
                         </configuration>
                         <executions>
                             <execution>
@@ -171,7 +170,6 @@
                     </plugin>
                 </plugins>
             </build>
-
             <distributionManagement>
                 <snapshotRepository>
                     <id>ossrh</id>
@@ -181,16 +179,13 @@
                 </snapshotRepository>
                 <repository>
                     <id>ossrh</id>
-                    <url>
-                        https://oss.sonatype.org/service/local/staging/deploy/maven2/
-                    </url>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
                 </repository>
             </distributionManagement>
         </profile>
 
         <profile>
             <id>github</id>
-
             <distributionManagement>
                 <repository>
                     <id>github</id>
