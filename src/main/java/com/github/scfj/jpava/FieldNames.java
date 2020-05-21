@@ -8,6 +8,9 @@ import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toSet;
 
+/**
+ * Represents a set of fields of some class.
+ */
 public class FieldNames {
     private final Set<String> fieldNames;
 
@@ -25,6 +28,10 @@ public class FieldNames {
         return fieldNames.stream();
     }
 
+    /**
+     * @param excludedFields fields to omit in result
+     * @return new {@code FieldNames} instance with missing {@code excludedFields}
+     */
     public FieldNames except(String... excludedFields) {
         return except(Arrays.stream(excludedFields).collect(toSet()));
     }

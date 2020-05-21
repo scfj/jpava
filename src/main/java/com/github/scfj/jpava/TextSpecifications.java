@@ -7,6 +7,13 @@ import com.github.scfj.jpava.predicates.CaseMatchers;
 import com.github.scfj.jpava.predicates.IgnoreCaseMatchers;
 import com.github.scfj.jpava.predicates.Matchers;
 
+/**
+ * Provides simple DSL for building {@code Specification}
+ * {@link org.springframework.data.jpa.domain.Specification}
+ *
+ * @param <T> entity type to be searched
+ *            (annotated with {@code @javax.persistence.Entity})
+ */
 public class TextSpecifications<T> {
     private final ComposeStrategy composeStrategy;
     private FieldNames fieldNames;
@@ -16,21 +23,32 @@ public class TextSpecifications<T> {
         this(fieldNames, new OrCompose());
     }
 
-    private TextSpecifications(FieldNames fieldNames, ComposeStrategy composeStrategy) {
+    private TextSpecifications(
+            FieldNames fieldNames,
+            ComposeStrategy composeStrategy
+    ) {
         this.fieldNames = fieldNames;
         this.composeStrategy = composeStrategy;
     }
 
-    public static <T> TextSpecifications<T> forClass(Class<T> entityClass) {
+    public static <T> TextSpecifications<T> forClass(
+            Class<T> entityClass
+    ) {
         return inAnyColumnOf(entityClass);
     }
 
-    public static <T> TextSpecifications<T> inAnyColumnOf(Class<T> entityClass) {
+    public static <T> TextSpecifications<T> inAnyColumnOf(
+            Class<T> entityClass
+    ) {
         return new TextSpecifications<>(new FieldNames(entityClass));
     }
 
-    public static <T> TextSpecifications<T> inAllColumnsOf(Class<T> entityClass) {
-        return new TextSpecifications<T>(new FieldNames(entityClass), new AndCompose());
+    public static <T> TextSpecifications<T> inAllColumnsOf(
+            Class<T> entityClass
+    ) {
+        return new TextSpecifications<T>(
+                new FieldNames(entityClass), new AndCompose()
+        );
     }
 
     public TextSpecifications<T> except(String... fields) {
