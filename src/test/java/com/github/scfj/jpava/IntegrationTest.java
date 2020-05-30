@@ -10,7 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import static com.github.scfj.jpava.TextSpecifications.forClass;
 import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.both;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
 
@@ -18,13 +18,15 @@ import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInA
 @ContextConfiguration("application.xml")
 @EnableAutoConfiguration
 public class IntegrationTest {
+    @Autowired
+    private PostRepository postRepository;
+
     TextSpecifications<Post> posts = forClass(Post.class);
+
     Post post1 = new Post("This is hello", "world written");
     Post post2 = new Post("in java", "with spring,");
     Post post3 = new Post("spring boot,", "its tests");
     Post post4 = new Post("and its", "data jpa");
-    @Autowired
-    private PostRepository postRepository;
 
     @BeforeEach
     void setUp() {
@@ -37,7 +39,8 @@ public class IntegrationTest {
     void searchHello() {
         assertThat(
                 postRepository.findAll(posts.withText("Hello")),
-                allOf(containsInAnyOrder(post1), not(containsInAnyOrder(post2, post3, post4)))
+                both(containsInAnyOrder(post1))
+                    .and(not(containsInAnyOrder(post2, post3, post4)))
         );
     }
 
@@ -45,7 +48,8 @@ public class IntegrationTest {
     void searchSpring() {
         assertThat(
                 postRepository.findAll(posts.withText("spring")),
-                allOf(containsInAnyOrder(post2, post3), not(containsInAnyOrder(post1, post4)))
+                both(containsInAnyOrder(post2, post3))
+                    .and(not(containsInAnyOrder(post1, post4)))
         );
     }
 
@@ -53,7 +57,8 @@ public class IntegrationTest {
     void searchIts() {
         assertThat(
                 postRepository.findAll(posts.withText("its")),
-                allOf(containsInAnyOrder(post3, post4), not(containsInAnyOrder(post1, post2)))
+                both(containsInAnyOrder(post3, post4))
+                    .and(not(containsInAnyOrder(post1, post2)))
         );
     }
 }
